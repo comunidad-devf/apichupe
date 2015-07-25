@@ -3,7 +3,7 @@ from tastypie.authorization import Authorization
 from tastypie.validation import CleanedDataFormValidation
 
 from app.models import Category, Drink
-from app.forms import CategoryForm
+from app.forms import CategoryForm, DrinkForm
 
 class CategoryResource(ModelResource):
 	class Meta:
@@ -16,3 +16,4 @@ class DrinkResource(ModelResource):
 	class Meta:
 		queryset = Drink.objects.all()
 		authorization = Authorization()
+		validation = CleanedDataFormValidation(form_class=DrinkForm)
